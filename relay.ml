@@ -53,6 +53,7 @@ let scale_to_client ~xwayland (x, y) =
   | None -> (x, y)
   | Some xw ->
     let scale = xw#scale in
+    Log.info (fun f -> f "scale_to_client %ld %ld %ld" x y scale);
     (Int32.mul x scale, Int32.mul y scale)
 
 let scale_to_host ~xwayland (x, y) =
@@ -60,6 +61,7 @@ let scale_to_host ~xwayland (x, y) =
   | None -> (x, y)
   | Some xw ->
     let scale = xw#scale in
+    Log.info (fun f -> f "scale_to_host %ld %ld %ld" x y scale);
     (Int32.div x scale, Int32.div y scale)
 
 let point_to_client ~xwayland (x, y) =
